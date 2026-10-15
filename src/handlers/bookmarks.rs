@@ -1,23 +1,12 @@
 use actix_web::{get, web, Responder};
 use crate::models::Bookmark;
+use crate::state::AppState;
 
 #[get("/bookmarks")]
-pub async fn list_bookmarks( ) -> impl Responder {
-    let bookmarks:Vec<Bookmark> = vec! [
-        Bookmark {
-            id: 1,
-            title: String::from("Bookmark"),
-            url: String::from("example.com"),
-            tag: String::from("example"),
-        },
-        
-        Bookmark {
-            id: 2,
-            title: String::from("Bookmark"),
-            url: String::from("example.com"),
-            tag: String::from("example"),
-        }
-    ];
-    
-    web::Json(bookmarks)
+pub async fn list_bookmarks(
+    data: web::Data<AppState>
+) -> impl Responder {
+    let bookmarks = data.bookmarks.lock().unwrap();
+
+    web::Json(bookmarks.clone())
 }
