@@ -1,7 +1,8 @@
 mod handlers;
+mod models;
 
 use actix_web::{web, App, HttpServer};
-use crate::handlers::general;
+use crate::handlers::{general, bookmarks};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -12,6 +13,7 @@ async fn main() -> std::io::Result<()> {
             .service(general::hello)
             .service(general::about)
             .route("/health", web::get().to(general::health))
+            .service(bookmarks::list_bookmarks)
     })
         .bind(("127.0.0.1", 8080))?
         .run()
