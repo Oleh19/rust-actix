@@ -1,4 +1,4 @@
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Clone)]
 pub struct Bookmark {
@@ -6,4 +6,9 @@ pub struct Bookmark {
     pub title: String,
     pub url: String,
     pub tag: String,
+}
+
+#[derive(Deserialize)]
+pub struct TagFilter {
+    pub tag: Option<String>, 
 }

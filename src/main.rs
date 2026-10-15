@@ -18,6 +18,7 @@ async fn main() -> std::io::Result<()> {
             .service(general::about)
             .route("/health", web::get().to(general::health))
             .service(bookmarks::list_bookmarks)
+            .service(bookmarks::get_bookmark)
     )
         .bind(("127.0.0.1", 8080))?
         .run()

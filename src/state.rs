@@ -22,7 +22,7 @@ impl AppState {
                         id: 2,
                         title: String::from("Bookmark"),
                         url: String::from("example.com"),
-                        tag: String::from("example"),
+                        tag: String::from("horror"),
                     }
                 ]
                )
