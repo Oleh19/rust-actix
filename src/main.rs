@@ -19,6 +19,9 @@ async fn main() -> std::io::Result<()> {
             .route("/health", web::get().to(general::health))
             .service(bookmarks::list_bookmarks)
             .service(bookmarks::get_bookmark)
+            .service(bookmarks::create_bookmark)
+            .service(bookmarks::update_bookmark)
+            .service(bookmarks::delete_bookmark)
     )
         .bind(("127.0.0.1", 8080))?
         .run()

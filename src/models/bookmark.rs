@@ -12,3 +12,10 @@ pub struct Bookmark {
 pub struct TagFilter {
     pub tag: Option<String>, 
 }
+
+#[derive(Deserialize)]
+pub struct NewBookmark {
+    pub title: String,
+    pub url: String,
+    pub tag: String,
+}
